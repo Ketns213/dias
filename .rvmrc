@@ -1,0 +1,1 @@
+rvm use ruby-1.9.3@dius_dynamodb_hack --create
