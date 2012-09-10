@@ -1,4 +1,11 @@
 DynamoDbHackday::Application.routes.draw do
+
+  resources :user do
+
+  end
+  root :to => "user#index"
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
