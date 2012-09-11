@@ -5,9 +5,7 @@ class User
   field :name
   field :email
   field :password
-  field :rank, :integer
-  field :number, :float
-  field :joined_at, :datetime
+  field :age, :integer
   field :hash, :serialized
 
   has_many :addresses
@@ -16,20 +14,20 @@ class User
   index :email
   index [:name, :email]
   index :created_at, :range => true
-  index :name, :range_key => :joined_at
 
   validates_presence_of :name
   validates_format_of :email, :with => /@/
 
-  before_save :set_default_password
+  before_save :set_defaults
   after_destroy :delete_addresses
 
-  def set_default_password
-    password='P@ssw0rd123'
+  def set_defaults
+    self.age = 21
+    self.password='P@ssw0rd123'
   end
 
   def delete_addresses
-    addresses.each { |address |
+    addresses.each { |address|
       address.delete!
     }
   end
@@ -43,3 +41,4 @@ class User
   end
 
 end
+

@@ -1,9 +1,14 @@
 DynamoDbHackday::Application.routes.draw do
 
-  resources :user do
+  resources :users do
 
   end
-  root :to => "user#index"
+
+  resources :addresses do
+
+  end
+
+  root :to => "users#index"
 
 
   # The priority is based upon order of creation:
